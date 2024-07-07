@@ -1,0 +1,11 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  /* background-color: rgb(131, 255, 137); */
+}
+
+canvas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

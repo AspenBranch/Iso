@@ -1,0 +1,307 @@
+function Block(x,y,type){
+    this.x=x;
+    this.type=type;
+    this.y=y;
+    this.designY=y;
+    this.Sz=100;
+    this.portalConnection={
+        isPortal:false,
+        connectionX:this.x,
+        connectionY:this.y
+    };
+    this.deathFloating=random(0,TAU);
+    this.timer=0;
+    this.timerCount=0;
+    this.detectBlocks=function(blocks){
+        for(var i=0;i<blocks.length;i++){
+            var b=blocks[i];
+            switch(this.type){
+                case 1:
+                break;
+                case 2:
+                break;
+                case 3:
+                break;
+                case 4:
+                    this.portalConnection.isPortal=true;
+                    if(this.type===b.type&&this.y===b.y&&this.x!==b.x){
+                        this.portalConnection.connectionX=b.x;
+                        this.portalConnection.connectionY=b.y;
+                    }
+                break;
+            }
+        }
+    };
+    this.animate=function(){
+        switch(this.type){
+            case 1:
+            break;
+            case 2:
+                this.designY-=0.1*sin(this.deathFloating);
+                this.deathFloating+=2*PI/180;
+            break;
+            case 3:
+            break;
+            case 4:
+            break;
+            case 5:
+            break;
+            case 6:
+                this.designY-=0.2*sin(this.deathFloating);
+                this.deathFloating+=2*PI/180;
+                this.timer++;
+                if(this.timer%60===0){
+                    this.timerCount++;
+                }
+            break;
+        }
+    };
+    this.show=function(){
+        switch(this.type){
+            case 1:
+                noStroke();
+            fill(BG[0]*1.2,BG[1]*1.2,BG[2]*1.2);
+            beginShape();
+                vertex(this.x-this.Sz/2,height*10);
+                vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+                vertex(this.x,this.y+this.Sz/2);
+                vertex(this.x,height*10);
+            endShape(CLOSE);
+            fill(BG[0]*1.1,BG[1]*1.1,BG[2]*1.1);
+            beginShape();
+            vertex(this.x,height*10);
+            vertex(this.x,this.y+this.Sz/2);
+            vertex(this.x+this.Sz/2,this.y+this.Sz/4);
+            vertex(this.x+this.Sz/2,height*10);
+            endShape(CLOSE);
+                strokeWeight(3);
+                fill(25,35,48);
+                stroke(25,35,48);
+                strokeCap(SQUARE);
+            beginShape();
+                vertex(this.x-this.Sz/2,this.y);
+                vertex(this.x,this.y-this.Sz/4);
+                vertex(this.x+this.Sz/2,this.y);
+                vertex(this.x,this.y+this.Sz/4);
+            endShape(CLOSE);
+            stroke(25*0.5,35*0.5,48*0.5);
+            fill(25*0.5,35*0.5,48*0.5);
+            beginShape();
+                vertex(this.x-this.Sz/2,this.y);
+                vertex(this.x,this.y+this.Sz/4);
+                vertex(this.x+this.Sz/2,this.y);
+                vertex(this.x+this.Sz/2,this.y+this.Sz/4);
+                vertex(this.x,this.y+this.Sz/2);
+                vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+            endShape(CLOSE);
+            break;
+            case 2:
+                noStroke();
+            fill(BG[0]*1.2,BG[1]*1.2,BG[2]*1.2);
+            beginShape();
+                vertex(this.x-this.Sz/2,height*10);
+                vertex(this.x-this.Sz/2,this.designY+this.Sz/4);
+                vertex(this.x,this.designY+this.Sz/2);
+                vertex(this.x,height*10);
+            endShape(CLOSE);
+            fill(BG[0]*1.1,BG[1]*1.1,BG[2]*1.1);
+            beginShape();
+            vertex(this.x,height*10);
+            vertex(this.x,this.designY+this.Sz/2);
+            vertex(this.x+this.Sz/2,this.designY+this.Sz/4);
+            vertex(this.x+this.Sz/2,height*10);
+            endShape(CLOSE);
+                fill(25,35,48);
+            beginShape();
+                vertex(this.x-this.Sz/2,this.designY);
+                vertex(this.x,this.designY-this.Sz/4);
+                vertex(this.x+this.Sz/2,this.designY);
+                vertex(this.x,this.designY+this.Sz/4);
+            endShape(CLOSE);
+            beginShape();
+                vertex(this.x-this.Sz/2,this.designY);
+                vertex(this.x,this.designY+this.Sz/4);
+                vertex(this.x+this.Sz/2,this.designY);
+                vertex(this.x+this.Sz/2,this.designY+this.Sz/4);
+                vertex(this.x,this.designY+this.Sz/2);
+                vertex(this.x-this.Sz/2,this.designY+this.Sz/4);
+            endShape(CLOSE);
+            fill(146, 69, 255,200);
+            beginShape();
+            vertex(this.x-this.Sz/2+10,this.designY);
+            vertex(this.x,this.designY-this.Sz/2);
+            vertex(this.x,this.designY+this.Sz/4-10);
+            endShape(CLOSE);
+            fill(146*0.8, 69*0.8, 255*0.8,200);
+            beginShape();
+            vertex(this.x,this.designY-this.Sz/2);
+            vertex(this.x,this.designY+this.Sz/4-10);
+            vertex(this.x+this.Sz/2-10,this.designY);
+            endShape(CLOSE);
+            break;
+            case 3:
+                noStroke();
+            fill(BG[0]*1.2,BG[1]*1.2,BG[2]*1.2);
+            beginShape();
+                vertex(this.x-this.Sz/2,height*10);
+                vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+                vertex(this.x,this.y+this.Sz/2);
+                vertex(this.x,height*10);
+            endShape(CLOSE);
+            fill(BG[0]*1.1,BG[1]*1.1,BG[2]*1.1);
+            beginShape();
+            vertex(this.x,height*10);
+            vertex(this.x,this.y+this.Sz/2);
+            vertex(this.x+this.Sz/2,this.y+this.Sz/4);
+            vertex(this.x+this.Sz/2,height*10);
+            endShape(CLOSE);
+                strokeWeight(3);
+                fill(25,35,48);
+                stroke(25,35,48);
+                strokeCap(SQUARE);
+            beginShape();
+                vertex(this.x-this.Sz/2,this.y);
+                vertex(this.x,this.y-this.Sz/4);
+                vertex(this.x+this.Sz/2,this.y);
+                vertex(this.x,this.y+this.Sz/4);
+            endShape(CLOSE);
+            stroke(25*0.5,35*0.5,48*0.5);
+            fill(25*0.5,35*0.5,48*0.5);
+            beginShape();
+                vertex(this.x-this.Sz/2,this.y);
+                vertex(this.x,this.y+this.Sz/4);
+                vertex(this.x+this.Sz/2,this.y);
+                vertex(this.x+this.Sz/2,this.y+this.Sz/4);
+                vertex(this.x,this.y+this.Sz/2);
+                vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+            endShape(CLOSE);
+            break;
+            case 4:
+                noStroke();
+                fill(BG[0]*1.2,BG[1]*1.2,BG[2]*1.2);
+                beginShape();
+                    vertex(this.x-this.Sz/2,height*10);
+                    vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+                    vertex(this.x,this.y+this.Sz/2);
+                    vertex(this.x,height*10);
+                endShape(CLOSE);
+                fill(BG[0]*1.1,BG[1]*1.1,BG[2]*1.1);
+                beginShape();
+                vertex(this.x,height*10);
+                vertex(this.x,this.y+this.Sz/2+10);
+                vertex(this.x+this.Sz/2,this.y+this.Sz/4+10);
+                vertex(this.x+this.Sz/2,height*10);
+                endShape(CLOSE);
+                    strokeWeight(3);
+                    fill(94, 255, 135);
+                    stroke(94, 255, 135);
+                    strokeCap(SQUARE);
+                beginShape();
+                    vertex(this.x-this.Sz/2,this.y);
+                    vertex(this.x,this.y-this.Sz/4);
+                    vertex(this.x+this.Sz/2,this.y);
+                    vertex(this.x,this.y+this.Sz/4);
+                endShape(CLOSE);
+                stroke(25*0.5,35*0.5,48*0.5);
+                fill(25*0.5,35*0.5,48*0.5);
+                beginShape();
+                    vertex(this.x-this.Sz/2,this.y);
+                    vertex(this.x,this.y+this.Sz/4);
+                    vertex(this.x+this.Sz/2,this.y);
+                    vertex(this.x+this.Sz/2,this.y+this.Sz/4);
+                    vertex(this.x,this.y+this.Sz/2);
+                    vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+                endShape(CLOSE);
+            break;
+            case 5:
+                noStroke();
+                fill(BG[0]*1.2,BG[1]*1.2,BG[2]*1.2);
+                beginShape();
+                    vertex(this.x-this.Sz/2,height*10);
+                    vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+                    vertex(this.x,this.y+this.Sz/2);
+                    vertex(this.x,height*10);
+                endShape(CLOSE);
+                fill(BG[0]*1.1,BG[1]*1.1,BG[2]*1.1);
+                beginShape();
+                vertex(this.x,height*10);
+                vertex(this.x,this.y+this.Sz/2+10);
+                vertex(this.x+this.Sz/2,this.y+this.Sz/4+10);
+                vertex(this.x+this.Sz/2,height*10);
+                endShape(CLOSE);
+                    strokeWeight(3);
+                    fill(255, 226, 72);
+                    stroke(255, 226, 72);
+                    strokeCap(SQUARE);
+                beginShape();
+                    vertex(this.x-this.Sz/2,this.y);
+                    vertex(this.x,this.y-this.Sz/4);
+                    vertex(this.x+this.Sz/2,this.y);
+                    vertex(this.x,this.y+this.Sz/4);
+                endShape(CLOSE);
+                stroke(25*0.5,35*0.5,48*0.5);
+                fill(25*0.5,35*0.5,48*0.5);
+                beginShape();
+                    vertex(this.x-this.Sz/2,this.y);
+                    vertex(this.x,this.y+this.Sz/4);
+                    vertex(this.x+this.Sz/2,this.y);
+                    vertex(this.x+this.Sz/2,this.y+this.Sz/4);
+                    vertex(this.x,this.y+this.Sz/2);
+                    vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+                endShape(CLOSE);
+            break;
+            case 6:
+                noStroke();
+            fill(BG[0]*1.2,BG[1]*1.2,BG[2]*1.2);
+            beginShape();
+                vertex(this.x-this.Sz/2,height*10);
+                vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+                vertex(this.x,this.y+this.Sz/2);
+                vertex(this.x,height*10);
+            endShape(CLOSE);
+            fill(BG[0]*1.1,BG[1]*1.1,BG[2]*1.1);
+            beginShape();
+            vertex(this.x,height*10);
+            vertex(this.x,this.y+this.Sz/2);
+            vertex(this.x+this.Sz/2,this.y+this.Sz/4);
+            vertex(this.x+this.Sz/2,height*10);
+            endShape(CLOSE);
+                fill(25,35,48);
+            beginShape();
+                vertex(this.x-this.Sz/2,this.y);
+                vertex(this.x,this.y-this.Sz/4);
+                vertex(this.x+this.Sz/2,this.y);
+                vertex(this.x,this.y+this.Sz/4);
+            endShape(CLOSE);
+            beginShape();
+                vertex(this.x-this.Sz/2,this.y);
+                vertex(this.x,this.y+this.Sz/4);
+                vertex(this.x+this.Sz/2,this.y);
+                vertex(this.x+this.Sz/2,this.y+this.Sz/4);
+                vertex(this.x,this.y+this.Sz/2);
+                vertex(this.x-this.Sz/2,this.y+this.Sz/4);
+            endShape(CLOSE);
+            if(this.timerCount%2===0){
+                fill(146, 69, 255,200);
+            }else{
+                fill(146, 69, 255,100);
+            }
+            beginShape();
+            vertex(this.x-this.Sz/2+10,this.designY);
+            vertex(this.x,this.designY-this.Sz/2);
+            vertex(this.x,this.designY+this.Sz/4-10);
+            endShape(CLOSE);
+            if(this.timerCount%2===0){
+                fill(146*0.8, 69*0.8, 255*0.8,200);
+            }else{
+                fill(146*0.8, 69*0.8, 255*0.8,100);
+            }
+            beginShape();
+            vertex(this.x,this.designY-this.Sz/2);
+            vertex(this.x,this.designY+this.Sz/4-10);
+            vertex(this.x+this.Sz/2-10,this.designY);
+            endShape(CLOSE);
+            break;
+        }
+    };
+}
