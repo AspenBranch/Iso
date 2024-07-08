@@ -8,7 +8,7 @@ var fps = 120;
 var scene = 1;
 var rotation1 = Math.random(-Math.TAU, Math.TAU);
 var rotation2 = Math.random(-Math.TAU, Math.TAU);
-var rotation3 = Math.random(-Math.TAU, Math.TAU);
+var rotation3 = Math.random(-Math.TAU, Math.TAU); 
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
