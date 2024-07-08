@@ -134,7 +134,7 @@ function Ending(){
   textFont(font,50);
   fill(0,50);
   text("ISO",width/2+rand1X,height/2-50+rand1Y);
-  text("By Karllr and Juanster",width/2+rand1X,height/2+rand1Y);
+  text("By AspenBranch",width/2+rand1X,height/2+rand1Y);
   text("Please Reload to play again", width/2+rand1X,height/2+50+rand1Y);
   fill(0,100);
   text("ISO",width/2+rand2X,height/2-50+rand2Y);
@@ -142,7 +142,7 @@ function Ending(){
   text("Please Reload to play again", width/2+rand2X,height/2+50+rand2Y);
   fill(0);
   text("ISO",width/2,height/2-50);
-  text("By Karllr and Juanster",width/2,height/2);
+  text("By AspenBranch",width/2,height/2);
   text("Please Reload to play again", width/2,height/2+50);
   rand1X=lerp(rand1X,Antirand1X,0.05);
   rand2X=lerp(rand2X,Antirand2X,0.05);
