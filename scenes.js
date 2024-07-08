@@ -138,7 +138,7 @@ function Ending(){
   text("Please Reload to play again", width/2+rand1X,height/2+50+rand1Y);
   fill(0,100);
   text("ISO",width/2+rand2X,height/2-50+rand2Y);
-  text("By Karllr and Juanster",width/2+rand2X,height/2+rand2Y);
+  text("By AspenBranch",width/2+rand2X,height/2+rand2Y);
   text("Please Reload to play again", width/2+rand2X,height/2+50+rand2Y);
   fill(0);
   text("ISO",width/2,height/2-50);
