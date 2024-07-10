@@ -151,5 +151,16 @@ var worldMap=[
         '   xx',
         '    B',
     ],
+    [
+        'PxxxB',
+        '    x',
+        'O xBx',
+        'B  x ',
+        'Bx xB',
+        ' x  x',
+        ' Bxxx',
+        '   xx',
+        '    B',
+    ],
     [],
 ];
